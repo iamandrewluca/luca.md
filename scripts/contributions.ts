@@ -3,6 +3,7 @@ import { fetchContributions as fetchContributionsGitLab } from "./gitlab";
 
 type ProviderType = "github" | "gitlab";
 export type Provider = {
+	name: string;
 	provider: ProviderType;
 	username: string;
 	origin: string;

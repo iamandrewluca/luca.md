@@ -1,6 +1,24 @@
 <template>
 	<div class="overflow-x-auto rounded-2xl bg-white shadow-2xl">
-		<div ref="contributionsGraphRef" class="min-w-max p-10" />
+		<div class="min-h-[259px] min-w-[924px] p-10">
+			<div ref="contributionsGraphRef" />
+			<div class="text-sm">
+				<span>Data from:</span>
+				<ul class="ml-1 inline-flex gap-1">
+					<li v-for="(provider, index) in providers">
+						<a
+							:href="`${provider.origin}/${provider.username}`"
+							target="_blank"
+							rel="noopener"
+							class="text-blue-800"
+						>
+							{{ provider.name }}
+						</a>
+						<span v-if="index < providers.length - 1">,</span>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -10,6 +28,7 @@ import { cloneElement, createElement } from "react";
 import Calendar, { Props } from "react-activity-calendar";
 import data from "../data.json";
 import { createRoot } from "react-dom/client";
+import { providers } from "~/utils/providers";
 
 let contributionsGraphRef = ref();
 
